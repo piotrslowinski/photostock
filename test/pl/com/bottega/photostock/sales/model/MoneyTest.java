@@ -12,13 +12,14 @@ import static org.junit.Assert.assertTrue;
 
 public class MoneyTest {
 
-    private Money fiftyCredit = Money.valueOf(100);
+    private Money fiftyCredit = Money.valueOf(50);
     private Money seventyCredit = Money.valueOf(70);
     private Money fiftyEuro = Money.valueOf(50, "EUR");
     private Money seventyDollars = Money.valueOf(70, "USD");
 
     @Test
     public void shouldAddMoney(){
+        //when
         Money sum = fiftyCredit.add(seventyCredit);
         //then
         Money expected = Money.valueOf(120);
@@ -42,7 +43,7 @@ public class MoneyTest {
         assertEquals(expected, diff);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void shouldNotSubtractMoneyInDifferentCurrencies(){
         //given
 

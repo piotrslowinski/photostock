@@ -13,7 +13,7 @@ public class LightBox {
     private String name;
     private List<Picture> items = new LinkedList<>();
     private Client owner;
-    private Client client;
+
 
     public LightBox(Client owner, String name){
         this.owner = owner;
@@ -40,7 +40,7 @@ public class LightBox {
     }
 
     public Client getOwner() {
-        return client;
+        return owner;
     }
 
     public List<Picture> getItems() {

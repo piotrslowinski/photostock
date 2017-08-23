@@ -28,8 +28,8 @@ public class Picture {
         this.active = active;
     }
 
-    public Money calculatePrice(Client client){
-        return price;
+    public Money calculatePrice(Client client) {
+        return price.percent(100-client.discountPercent());
     }
 
     public boolean isAvailable(){

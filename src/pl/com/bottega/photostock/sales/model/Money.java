@@ -75,6 +75,7 @@ public class Money implements Comparable<Money> {
 
     @Override
     public int compareTo(Money other) {
+        checkCurrency(other);
         return (int)(cents - other.cents);
     }
 

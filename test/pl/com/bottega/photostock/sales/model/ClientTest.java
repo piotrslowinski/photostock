@@ -1,6 +1,9 @@
 package pl.com.bottega.photostock.sales.model;
 
+import com.sun.xml.internal.bind.api.impl.NameConverter;
 import org.junit.Test;
+
+import java.util.Currency;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -54,7 +57,9 @@ public class ClientTest {
     }
 
     @Test
-    public void paranoicTest() {
-        clientWithCredit.recharge(Money.valueOf(50, "Testowy zakup"));
+    public void shouldNotAllowChargeMOreThanCanAfford() {
+        clientWithCredit.charge(Money.valueOf(50),"Testowy zakup");
+        clientWithCredit.charge(Money.valueOf(100),"Testowy zakup");
+        clientWithCredit.charge(Money.valueOf(10),"Testowy zakup");
     }
 }
