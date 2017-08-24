@@ -19,7 +19,6 @@ public class ClientTest {
     private Client clientWithCredit = new Client("test",
             address,
             ClientStatus.VIP,
-            Money.valueOf(100),
             Money.valueOf(100));
     private Client clientWithNoMoney = new Client("test", address);
 
