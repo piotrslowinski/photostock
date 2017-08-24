@@ -9,10 +9,10 @@ public interface Product {
 
     boolean isAvailable();
 
-    Money calculatePrice();
+    Money calculatePrice(Client client);
 
-    void reservedBy();
+    void reservedPer(Client client);
 
-    void unreservedPer();
+    void unreservedPer(Client client);
 
 }

@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by user on 19.08.2017.
  */
-public class Picture {
+public class Picture implements Product {
 
     private Long number;
     private Set<String> tags;

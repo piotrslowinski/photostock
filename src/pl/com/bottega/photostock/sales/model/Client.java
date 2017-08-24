@@ -20,7 +20,7 @@ public class Client {
         this.name = name;
         this.address = address;
         this.status = status;
-        this.balance = balance;
+       this.balance = balance;
         this.creditLimit = creditLimit;
         if (balance.gt(Money.ZERO))
              transactions.add(new Transaction(balance, "First charge"));
@@ -54,5 +54,12 @@ public class Client {
 
     public int discountPercent() {
         return status.discountPercent();
+    }
+
+    private Money balance(){
+        Money saldo = creditLimit;
+        for (Transaction item: transactions)
+            saldo.add(item.getAmount());
+        return saldo;
     }
 }

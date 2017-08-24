@@ -9,24 +9,24 @@ import java.util.LinkedList;
 public class Reservation {
 
     private Client owner;
-    private Collection<Picture> items = new LinkedList<>();
+    private Collection<Product> items = new LinkedList<>();
 
     public Reservation(Client owner){
         this.owner = owner;
     }
 
-    public void add(Picture picture){
-        if (picture.isAvailable()) {
-            items.add(picture);
-            picture.reservedPer(owner);
+    public void add(Product product){
+        if (product.isAvailable()) {
+            items.add(product);
+            product.reservedPer(owner);
         }
         else
             throw new IllegalStateException("Product is not available");
     }
 
-    public void remove(Picture picture){
-        if(items.remove(picture)){
-            picture.unreservedPer(owner);
+    public void remove(Product product){
+        if(items.remove(product)){
+            product.unreservedPer(owner);
         }
         else
             throw new IllegalArgumentException("Product is not part of this reservation");
