@@ -14,9 +14,6 @@ public class Transaction {
     private LocalDateTime date = LocalDateTime.now();
     private List<Transaction> transactions = new LinkedList<>();
 
-    public Transaction(Money amount) {
-        this.amount = amount;
-    }
 
     public Transaction(Money amount, String description) {
         this.amount = amount;
@@ -27,10 +24,5 @@ public class Transaction {
         return amount;
     }
 
-//    private Money balance(){
-//        for (Transaction item: transactions)
-//                amount.add(item.amount);
-//        return amount;
-//    }
 
 }

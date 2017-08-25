@@ -18,7 +18,8 @@ public class ConsoleApp {
         Picture p3 = repository.get(3L);
 
 
-        Client client = new Client("Jan Nowak", new Address("ul. Północna", "Poland", "Lublin", "20-520"));
+        Client client = new Client("Jan Nowak", new Address("ul. Północna",
+                "Poland", "Lublin", "20-520"));
         client.recharge(Money.valueOf(100000));
 
         Reservation reservation = new Reservation(client);
