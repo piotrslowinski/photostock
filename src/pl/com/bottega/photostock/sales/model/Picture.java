@@ -8,61 +8,23 @@ import java.util.Set;
 /**
  * Created by user on 19.08.2017.
  */
-public class Picture implements Product {
+public class Picture extends AbstractProduct {
 
-    private Long number;
+
     private Set<String> tags;
-    private Money price;
-    private Boolean active;
-    private Client reservedBy, owner;
 
 
     public Picture(Long number, Set<String> tags, Money price){
         this(number, tags, price, true); //wywolywanie jednego konstruktora z drugiego
+        this.tags = new HashSet<>(tags);
     }
 
     public Picture(Long number, Set<String> tags, Money price, Boolean active){
-        this.number = number;
+        super(number, price, active);
         this.tags = new HashSet<>(tags);
-        this.price = price;
-        this.active = active;
-    }
-
-    public Money calculatePrice(Client client) {
-        return price.percent(100-client.discountPercent());
-    }
-
-    public boolean isAvailable(){
-        return active && reservedBy == null;
-    }
-
-    public void reservedPer(Client client){
-
-        if (!isAvailable())
-            throw new IllegalStateException("Product is not available");
-        reservedBy = client;
 
     }
 
-    public void unreservedPer(Client client){
-        if (owner != null)
-            throw new IllegalStateException("Product is already purchased");
-        checkReservation(client);
-        if (!reservedBy.equals(client))
-            throw new IllegalStateException(String.format("Product is not reserved by %s ", client));
-        reservedBy = null;
-    }
-
-    private void checkReservation(Client client) {
-        if (reservedBy == null || !reservedBy.equals(client))
-            throw new IllegalStateException(String.format("Product is not reserved by %s ", client));
-    }
-
-    public void soldPer(Client client){
-        if (!reservedBy.equals(client))
-            throw new IllegalStateException(String.format("Product is not reserved by %s ", client));
-        owner = client;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -71,19 +33,14 @@ public class Picture implements Product {
 
         Picture picture = (Picture) o;
 
-        return number.equals(picture.number);
+        return getNumber().equals(picture.getNumber());
     }
 
     @Override
     public int hashCode() {
-        return number.hashCode();
+        return getNumber().hashCode();
     }
 
-    public Long getNumber() {
-        return number;
-    }
 
-    public Money getPrice() {
-        return price;
-    }
+
 }
