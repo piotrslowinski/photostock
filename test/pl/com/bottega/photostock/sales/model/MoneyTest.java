@@ -93,5 +93,11 @@ public class MoneyTest {
 
     }
 
+    @Test
+    public void shouldConvertMoney(){
+        assertEquals(fiftyEuro, fiftyCredit.convert("EUR", 1d));
+        assertEquals(seventyCredit,fiftyEuro.convert(Money.DEFAULT_CURRENCY, 1.4));
+    }
+
 
 }

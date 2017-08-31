@@ -22,12 +22,9 @@ public class Money implements Comparable<Money> {
         this.currency = currency;
     }
 
-    public static Money valueOf(Integer value) {
-        return valueOf(value, DEFAULT_CURRENCY);
-    }
 
-    public static Money valueOf(Integer value, String currency) {
-        return new Money(value * 100L, currency);
+    public static Money valueOf(double value, String currency) {
+        return new Money((long)(value * 100L), currency);
     }
 
     public Money add(Money other){
@@ -101,5 +98,13 @@ public class Money implements Comparable<Money> {
 
     public Money percent(int percent) {
         return new Money(cents * percent / 100, currency);
+    }
+
+    public String currency(){
+        return currency;
+    }
+
+    public Money convert(String targetCurrency, Double exRate){
+        return Money.valueOf(exRate*cents/100, targetCurrency.toUpperCase());
     }
 }
