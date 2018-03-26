@@ -2,9 +2,7 @@ package pl.com.bottega.photostock.sales.ui;
 
 import pl.com.bottega.photostock.sales.infrastructures.InMemoryPictureRepository;
 import pl.com.bottega.photostock.sales.model.*;
-
-import java.util.HashSet;
-import java.util.Set;
+import pl.com.bottega.photostock.sales.model.repositories.PictureRepository;
 
 /**
  * Created by user on 06.08.2017.

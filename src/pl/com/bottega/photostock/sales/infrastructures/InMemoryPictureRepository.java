@@ -2,7 +2,7 @@ package pl.com.bottega.photostock.sales.infrastructures;
 
 import pl.com.bottega.photostock.sales.model.Money;
 import pl.com.bottega.photostock.sales.model.Picture;
-import pl.com.bottega.photostock.sales.model.PictureRepository;
+import pl.com.bottega.photostock.sales.model.repositories.PictureRepository;
 
 import java.util.*;
 
