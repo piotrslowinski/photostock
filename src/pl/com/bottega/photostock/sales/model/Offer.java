@@ -2,9 +2,6 @@ package pl.com.bottega.photostock.sales.model;
 
 import java.util.*;
 
-/**
- * Created by user on 06.08.2017.
- */
 public class Offer {
 
     private Client owner;
@@ -12,17 +9,12 @@ public class Offer {
 
     public Offer(Client owner, Collection<Product> items){
         this.owner = owner;
-        this.items = new LinkedList<>(items); //tworze nowa kolekcje aby nikt nie modyfikowal mi jej z zewnatrz
-        this.items.sort(new Comparator<Product>(){
-
-            public int compare(Product o1, Product o2){
-                return o2.calculatePrice(owner).compareTo(o1.calculatePrice(owner));  //malejace sortowanie
-            }
-        });
+        this.items = new LinkedList<>(items);
+        this.items.sort((o1, o2) -> o2.calculatePrice(owner).compareTo(o1.calculatePrice(owner)));
     }
 
     public boolean sameAs(Offer offer, Money tolerance){
-        return false;
+        return getTotalCost().sub(offer.getTotalCost()).abs().lte(tolerance);
     }
 
     public int getItemsCount(){
@@ -38,5 +30,16 @@ public class Offer {
 
     public Collection<Product> getItems() {
         return Collections.unmodifiableCollection(items);
+    }
+
+    public Purchase purchase() {
+        Money cost = getTotalCost();
+        Purchase purchase = new Purchase(owner, items);
+        owner.charge(cost, String.format("Purchase number %s", purchase.getNumber()));
+        return purchase;
+    }
+
+    public Client getOwner() {
+        return owner;
     }
 }

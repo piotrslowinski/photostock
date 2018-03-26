@@ -1,8 +1,5 @@
 package pl.com.bottega.photostock.sales.model;
 
-/**
- * Created by user on 19.08.2017.
- */
 public class Money implements Comparable<Money> {
 
     public static final String DEFAULT_CURRENCY = "CREDIT";
@@ -101,5 +98,9 @@ public class Money implements Comparable<Money> {
 
     public Money percent(int percent) {
         return new Money(cents * percent / 100, currency);
+    }
+
+    public Money abs() {
+        return new Money(Math.abs(cents), currency);
     }
 }

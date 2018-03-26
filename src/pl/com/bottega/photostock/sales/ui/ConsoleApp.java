@@ -19,9 +19,9 @@ public class ConsoleApp {
         Client client = new Client("Jan Nowak", new Address("ul. Północna", "Poland", "Lublin", "20-520"));
         client.recharge(Money.valueOf(100000));
 
-        Reservation reservation = new Reservation(client);
+        Reservation reservation = new Reservation(client, number);
 
-        LightBox l = new LightBox(client, "kotki");
+        LightBox l = new LightBox(client, "kotki", number);
         l.add(p1);
         l.add(p2);
         l.add(p3);
@@ -43,7 +43,7 @@ public class ConsoleApp {
         Offer offer = reservation.generateOffer();
         Money cost = offer.getTotalCost();
         if (client.canAfford(offer.getTotalCost())){
-            Purchase purchase = new Purchase(client, offer.getItems());
+            Purchase purchase = new Purchase(client, offer.getItems(), number);
             client.charge(cost, String.format("Zakup %s", purchase));
             System.out.println(String.format("Ilośc zakupionych zdjęć: %d, całkowity koszt: %s, ", offer.getItemsCount(), offer.getTotalCost()));
         }
