@@ -8,20 +8,18 @@ import java.util.Currency;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-/**
- * Created by user on 20.08.2017.
- */
+
 public class ClientTest {
 
 
-
     private Address address = new Address("ul. Północna 11", "Poland", "Lublin", "20-001");
-    private Client clientWithCredit = new Client("test",
+    private Client clientWithCredit = new VIPClient("test",
             address,
             ClientStatus.VIP,
             Money.valueOf(100),
             Money.valueOf(100));
-    private Client clientWithNoMoney = new Client("test", address);
+
+    private Client clientWithNoMoney = new VIPClient("test", address);
 
     @Test
     public void shouldCheckIfClientCanAfford() {

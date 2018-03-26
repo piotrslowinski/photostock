@@ -11,7 +11,7 @@ public class LightBox {
     private String number;
 
 
-    public LightBox(Client owner, String name, String number){
+    public LightBox(Client owner, String name){
         this.owner = owner;
         this.name = name;
         this.number = UUID.randomUUID().toString();
