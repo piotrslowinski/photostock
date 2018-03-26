@@ -1,6 +1,5 @@
 package pl.com.bottega.photostock.sales.ui;
 
-import pl.com.bottega.photostock.sales.infrastructures.InMemoryPictureRepository;
 import pl.com.bottega.photostock.sales.model.*;
 import pl.com.bottega.photostock.sales.model.repositories.PictureRepository;
 

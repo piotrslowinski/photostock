@@ -11,7 +11,7 @@ public class Reservation {
     private Collection<Product> items = new LinkedList<>();
     private String number;
 
-    public Reservation(Client owner, String number){
+    public Reservation(Client owner){
         this.number = UUID.randomUUID().toString();
         this.owner = owner;
     }

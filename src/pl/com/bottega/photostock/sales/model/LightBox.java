@@ -48,6 +48,10 @@ public class LightBox {
                 results.add(pic);
         return results;
     }
+
+    public String getNumber() {
+        return number;
+    }
 }
 
 
